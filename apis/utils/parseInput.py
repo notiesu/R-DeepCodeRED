@@ -33,6 +33,7 @@ class flight_api:
     
     def process_url(self, urls):
         dfs =[]
+        bad = []
         for url in urls:
             # url = 'https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=HOU&destinationLocationCode=AUS&departureDate=2024-05-02&adults=1&nonStop=false&max=250'
             # exit()
@@ -41,10 +42,13 @@ class flight_api:
             print(resp.json())
             offers = resp.json()["data"]
             
+            
             df = self.process(offers)
             dfs.append(df)
-            
-            
+        
+        if len(dfs) == 0:
+            return pd.DataFrame()
+        
         return pd.concat(dfs)
     
     
