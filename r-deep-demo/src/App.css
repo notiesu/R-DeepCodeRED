@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+}
+
+.App-logo-text {
+  color: white;
+  font-size: 2rem; /* Adjusted for visibility */
+}
+
+.App-header {
+  background-color: rgb(228, 83, 84); /* Updated to red */
+  padding: 20px;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-main {
+  margin: 20px;
+}
+
+.prompt-section h2 {
+  color: #000; /* Ensuring the title is visible */
+}
+
+.prompt-input, .output-prompt {
+  width: 80%;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff; /* Added for contrast */
+}
+
+.prompt-input {
+  height: 100px;
+}
+
+.output-prompt {
+  height: 100px;
+  line-height: 100px; /* Center text vertically */
+  background-color: #f0f0f0; /* Light grey background for output */
+}
+
+.image-input-section {
+  margin: 20px auto;
+  width: 80%;
+}
+
+input[type="file"] {
+  margin-top: 10px;
+}
