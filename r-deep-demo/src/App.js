@@ -78,7 +78,7 @@ function App() {
             </div>
           {/* Wrapper for SVG for better control */}
           <div className="svg-wrapper" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <YourSvg style={{ width: '100px', height: '100px', margin: '20px auto' }} />
+            <YourSvg style={{ width: '500px', height: '200px', margin: '20px auto' }} />
           </div>
           <div className="output-section">
             {/* Displaying the output response from the API */}
