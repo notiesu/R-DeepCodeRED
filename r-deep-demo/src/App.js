@@ -1,16 +1,35 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 function App() {
-  const [prompt, setPrompt] = useState('');
 
-  const handleKeyDown = (event) => {
+  const [prompt, setPrompt] = useState('');
+  const [response, setResponse] = useState('');
+  const [history, setHistory] = useState([]);
+
+  const handleKeyDown = async (event) => {
     if (event.keyCode === 13) {
       event.preventDefault(); // Prevents the default action to be triggered (Newline)
-      console.log(prompt); // Replace this with your function
+      // Add the current prompt to the history before making the API call
+      // Note: At this point, we're not adding the response since we haven't received it yet
+      setHistory([...history, { prompt, response: "Waiting for response..." }]);
+      setPrompt(''); // Clear the prompt
+      // Make an API call to send the prompt
+      try {
+        // Replace 'YOUR_API_ENDPOINT' with the actual endpoint URL
+        // Feed prompt to the API
+        const res = await axios.post('http://localhost:8888/api', { prompt }); // Assuming the API endpoint is /api
+        // set response variable: res to be the API's response
+        console.log(res.data); // Assuming the API returns the response in res.data
+        setResponse(res.data); // Update the state with the API response
+      } catch (error) {
+        console.error("Error fetching response:", error);
+        setResponse("Failed to get response.");
+      }
       // Clear the prompt
-      setPrompt('');
+      // setPrompt('');
     }
   }
 
@@ -39,14 +58,15 @@ function App() {
             <input type="file" id="image-upload" />
           </div>
           <div className="output-section">
-            <div className="output-prompt">
-              {/* Future chatbot integration
-              import { chatbotResponse } from './backdemo';
-              const response = chatbotResponse(prompt);
-              {response}
-              */}
-              Great news! I found 5 flights from Houston to Dallas!
-            </div>
+            {/* Displaying the output response from the API */}
+            <div className="output-prompt">{response || "Output will be displayed here."}</div>
+            {/* Displaying the chat history of prompts with lower opacity*/}
+            {history.map((item, index) => (
+              <div key={index} style={{opacity: 0.5}}>
+                <p><strong>Prompt:</strong> {item.prompt}</p>
+                <p><strong>Response:</strong> {item.response}</p>
+                </div>
+                ))}
           </div>
         </section>
       </main>
