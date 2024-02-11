@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+// Import the SVG file as a component
+import { ReactComponent as YourSvg } from './imagebf.svg';
 
 function App() {
 
@@ -53,9 +55,9 @@ function App() {
             onChange={handlePromptChange}
             onKeyDown={handleKeyDown}
           ></textarea>
-          <div className="image-input-section">
-            <label htmlFor="image-upload">Upload image:</label>
-            <input type="file" id="image-upload" />
+          {/* Wrapper for SVG for better control */}
+          <div className="svg-wrapper" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <YourSvg style={{ width: '100px', height: '100px', margin: '20px auto' }} />
           </div>
           <div className="output-section">
             {/* Displaying the output response from the API */}
