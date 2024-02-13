@@ -7,8 +7,8 @@ from openai import OpenAI
 class Output_API:
     def __init__(self):
         
-        # self.assistant_id = 'asst_ykIfmqwJjhI1Bo4QqMNoTA1A'
-        self.assistant_id = 'asst_UKKIeGeHwOzb1VK5XxYWNd8V'
+        # self.assistant_id = 'REMOVED'
+        self.assistant_id = 'REMOVED'
         self.load_openai_client_and_assistant()
         
     def load_openai_client_and_assistant(self):
